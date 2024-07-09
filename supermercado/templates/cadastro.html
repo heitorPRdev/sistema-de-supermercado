@@ -5,7 +5,7 @@
 
 {% block conteudo %}
     <div id="formid" >
-        <form action="{% url 'login' %}" method="post" style="margin : 15px;">
+        <form action="{% url 'cadastro' %}" method="post" style="margin : 15px;">
             {% csrf_token %}
             <label for="inputPassword5" class="form-label">Nome</label>
             <input type="text" id="inputPassword5" name="username" class="form-control border-black" aria-describedby="passwordHelpBlock">
