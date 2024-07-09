@@ -1,1 +1,26 @@
-{% extends "base.html" %}
+{% extends "base\base.html" %}
+
+{% block titulo %}Supermercado| Login{% endblock titulo %}
+
+{% block conteudo %}
+    <div id="formid" >
+        <form action="{% url 'login' %}" method="post" style="margin : 15px;">
+            {% csrf_token %}
+            <label for="inputPassword5" class="form-label">Nome</label>
+            <input type="text" id="inputPassword5" name="username" class="form-control border-black" aria-describedby="passwordHelpBlock">
+            
+            <label for="inputPassword5" class="form-label">Password</label>
+            <input type="password" id="inputPassword5" name='password' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
+            
+            <button type="submit" class="btn btn-success">Criar</button>
+        </form>
+        {% if erro %}
+            <div class="bg-danger text-white " style="text-align: center;">
+                <p>{{ erro }}</p>
+            </div>
+            
+        {% endif %}
+    </div>
+    
+    
+{% endblock conteudo %}

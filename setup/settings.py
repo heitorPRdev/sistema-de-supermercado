@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'supermercado.apps.SupermercadoConfig'
+    'supermercado.apps.SupermercadoConfig',
 ]
 
 MIDDLEWARE = [
