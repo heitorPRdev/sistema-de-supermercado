@@ -23,9 +23,11 @@
         </form>
         
         {% if erro %}
-            <div class="bg-danger text-white " style="text-align: center;">
-                <p>{{ erro }}</p>
-            </div>
+            {%if erro == "Desculpe usuario não encontrado"%}
+                <div class="bg-danger text-white " style="text-align: center; font-size: 20px; border-radius: 5px;">
+                    <p>{{ erro }}</p>
+                </div>
+            {%endif%}
             
         {% endif %}
     </div>

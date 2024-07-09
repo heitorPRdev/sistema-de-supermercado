@@ -10,38 +10,57 @@
     {% endif %}
 {% endblock navaction %}
 {% block conteudo %}
-    <table class="table border-black" style="margin-top: 15px;">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Codigo de Barras</th>
-            <th scope="col">Validade</th>
-            <th scope="col">Peso</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Criado em</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for produto in produtos %}
+    {% if produtos %}
+        <table class="table border-black" style="margin-top: 15px;">
+            <thead>
             <tr>
-                <th scope="row">{{ produto.pk }}</th>
-                <td>{{ produto.nome_podu }}</td>
-                <td>{{ produto.cod_barras }}</td>
-                <td>{{ produto.valid }}</td>
-                <td>{{ produto.peso }}</td>
-                <td>{{ produto.fornecedor }}</td>
-                <td>{{ produto.criado }}</td>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Codigo de Barras</th>
+                <th scope="col">Validade</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Criado em</th>
             </tr>
-        {% endfor %}  
-        </tbody>
-    </table>
-    {% if atenticado %}
-        
-        <a href="{% url 'addprod' %}" class="btn btn-success">Adicionar produto</a>
-    {% else %}
-        <p style="font-size: 20px;">Você tem que se logar para cadastrar um produto</p>
-    {% endif %}
-    
+            </thead>
+            <tbody>
+            {% for produto in produtos %}
+                <tr>
+                    <th scope="row">{{ produto.pk }}</th>
+                    <td>{{ produto.nome_podu }}</td>
+                    <td>{{ produto.cod_barras }}</td>
+                    <td>{{ produto.valid }}</td>
+                    <td>{{ produto.peso }}</td>
+                    <td>{{ produto.fornecedor }}</td>
+                    <td>{{ produto.criado }}</td>
+                </tr>
+            {% endfor %}  
+            </tbody>
+        </table>
+        {% if atenticado %}
+            
+            <a href="{% url 'addprod' %}" class="btn btn-success">Adicionar produto</a>
+        {% else %}
+            <div style="margin-left: auto;margin-right: auto; text-align: center;">
+                <p style="font-size: 20px;">Se cadastre para adicionar um produto</p>
+                <a href="{% url 'cadastro' %}" class="btn btn-primary">Cadastro</a>
+                <a href="{% url 'login' %}" class="btn btn-primary">Logar-se</a>
+            </div>
+        {% endif %}
+    {%else%}
+        <div style="margin-left: auto;margin-right: auto; text-align: center;">
+            
+            {% if atenticado %}
+                <h1>Desculpe nada encontrado</h1>
+                <p style="font-size: 20px;">Desculpe,não tem nenhum produto ainda clique no botão verde para adicionar um produto</p>
+                <a href="{% url 'addprod' %}" class="btn btn-success">Adicionar produto</a>
+            {% else %}
+                <h1 >Desculpe nada encontrado</h1>
+                <p style="font-size: 20px;">Desculpe, se não tiver uma conta venha se cadastrar se tiver venha se logar</p>
+                <a href="{% url 'cadastro' %}" class="btn btn-primary">Cadastro</a>
+                <a href="{% url 'login' %}" class="btn btn-primary">Logar-se</a>
+            {% endif %}
+        </div>
+    {%endif %}
         
 {% endblock conteudo %}
