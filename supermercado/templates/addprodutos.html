@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Supermercado| Login{% endblock titulo %}
+
+{% block conteudo %}
+    <div id="formid" >
+        <form action="{% url 'addprod' %}" method="post" style="margin : 15px;">
+            {% csrf_token %}
+            <label for="inputPassword5" class="form-label">Nome</label>
+            <input type="text" id="inputPassword5" name="nome_prod" class="form-control border-black" aria-describedby="passwordHelpBlock">
+            
+            <label for="inputPassword5" class="form-label">Codigo De Barras</label>
+            <input type="number" id="inputPassword5" name='code_prod' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
+            
+            <label for="inputPassword5" class="form-label">Validade</label>
+            <input type="date" id="inputPassword5" name='vali_prod' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
+
+            <label for="inputPassword5" class="form-label">Peso</label>
+            <input type="number" id="inputPassword5" name='peso_prod' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
+
+            <label for="inputPassword5" class="form-label">Fornecedor</label>
+            <input type="text" id="inputPassword5" name='forn_prod' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
+            
+            <button type="submit" class="btn btn-success">Criar</button>
+        </form>
+        {% if msg %}
+            <div class="bg-danger text-white " style="text-align: center;">
+                <p>{{ msg }}</p>
+            </div>
+            
+        {% endif %}
+    </div>
+    
+    
+{% endblock conteudo %}
