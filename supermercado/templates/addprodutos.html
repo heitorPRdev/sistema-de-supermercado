@@ -5,6 +5,7 @@
 
 {% block conteudo %}
     <div id="formid" >
+        <h1 style="font-size: 30px; text-align: center;">Cataloque um produto</h1>
         <form action="{% url 'addprod' %}" method="post" style="margin : 15px;">
             {% csrf_token %}
             <label for="inputPassword5" class="form-label">Nome</label>
