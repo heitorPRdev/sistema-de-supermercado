@@ -2,7 +2,12 @@
 {% extends "base.html" %}
 
 {% block titulo %}Supermercado| Login{% endblock titulo %}
-
+{% block navaction %}
+    {% if atenticado %}
+        
+        <a class="nav-link active" aria-current="page" href="{% url 'addprod' %}">Adicionar produto</a>
+    {% endif %}
+{% endblock navaction %}
 {% block conteudo %}
     <div id="formid" >
         <form action="{% url 'cadastro' %}" method="post" style="margin : 15px;">
@@ -14,6 +19,7 @@
             <input type="password" id="inputPassword5" name='password' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
             
             <button type="submit" class="btn btn-success">Criar</button>
+            <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
         </form>
         {% if erro %}
             <div class="bg-danger text-white " style="text-align: center;">

@@ -23,6 +23,7 @@
             <input type="text" id="inputPassword5" name='forn_prod' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
             
             <button type="submit" class="btn btn-success">Criar</button>
+            <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
         </form>
         {% if msg %}
             <div class="bg-danger text-white " style="text-align: center;">

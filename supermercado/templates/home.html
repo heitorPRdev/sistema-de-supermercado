@@ -2,7 +2,13 @@
 {% extends "base.html" %}
 
 {% block titulo %}Supermercado| Home{% endblock titulo %}
-
+{% block navaction %}
+    
+    {% if atenticado %}
+        
+        <a class="nav-link active" aria-current="page" href="{% url 'addprod' %}">Adicionar produto</a>
+    {% endif %}
+{% endblock navaction %}
 {% block conteudo %}
     <table class="table border-black" style="margin-top: 15px;">
         <thead>
@@ -30,8 +36,12 @@
         {% endfor %}  
         </tbody>
     </table>
+    {% if atenticado %}
+        
+        <a href="{% url 'addprod' %}" class="btn btn-success">Adicionar produto</a>
+    {% else %}
+        <p style="font-size: 20px;">Você tem que se logar para cadastrar um produto</p>
+    {% endif %}
     
         
-    
-    
 {% endblock conteudo %}

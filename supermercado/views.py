@@ -7,8 +7,11 @@ from .models import Produtos
 # Create your views here.
 def cadastro(request):
     if request.method == 'GET':
-        
-        return render(request,'cadastro.html')
+        if request.user.is_authenticated:
+            autenticado = True
+        else:
+            autenticado = False
+        return render(request,'cadastro.html',{'atenticado':autenticado})
     else:
         nome = request.POST.get('username')
         senha = request.POST.get('password')
@@ -22,8 +25,13 @@ def cadastro(request):
         
 
 def login(request):
+    
     if request.method == 'GET':
-        return render(request,'login.html')
+        if request.user.is_authenticated:
+            autenticado = True
+        else:
+            autenticado = False
+        return render(request,'login.html',{'atenticado':autenticado})
     else:
         nome = request.POST.get('username')
         senha = request.POST.get('password')
@@ -57,5 +65,9 @@ def AddProdutos(request):
     return redirect('cadastro')
 
 def home(request):
+    if request.user.is_authenticated:
+        autenticado = True
+    else:
+        autenticado = False
     produtos = Produtos.objects.all()
-    return render(request,'home.html',{'produtos':produtos})
+    return render(request,'home.html',{'produtos':produtos,'atenticado':autenticado})
