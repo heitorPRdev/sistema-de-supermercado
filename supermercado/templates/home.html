@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Supermercado| Home{% endblock titulo %}
+
+{% block conteudo %}
+    <table class="table border-black" style="margin-top: 15px;">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Codigo de Barras</th>
+            <th scope="col">Validade</th>
+            <th scope="col">Peso</th>
+            <th scope="col">Fornecedor</th>
+            <th scope="col">Criado em</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for produto in produtos %}
+            <tr>
+                <th scope="row">{{ produto.pk }}</th>
+                <td>{{ produto.nome_podu }}</td>
+                <td>{{ produto.cod_barras }}</td>
+                <td>{{ produto.valid }}</td>
+                <td>{{ produto.peso }}</td>
+                <td>{{ produto.fornecedor }}</td>
+                <td>{{ produto.criado }}</td>
+            </tr>
+        {% endfor %}  
+        </tbody>
+    </table>
+    
+        
+    
+    
+{% endblock conteudo %}
