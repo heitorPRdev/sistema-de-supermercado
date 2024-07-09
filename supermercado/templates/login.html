@@ -1,4 +1,5 @@
-{% extends "base\base.html" %}
+
+{% extends "base.html" %}
 
 {% block titulo %}Supermercado| Login{% endblock titulo %}
 
@@ -12,7 +13,7 @@
             <label for="inputPassword5" class="form-label">Password</label>
             <input type="password" id="inputPassword5" name='password' class="form-control border-black mb-3" aria-describedby="passwordHelpBlock">
             
-            <button type="submit" class="btn btn-success">Criar</button>
+            <button type="submit" class="btn btn-success">Entrar</button>
         </form>
         {% if erro %}
             <div class="bg-danger text-white " style="text-align: center;">

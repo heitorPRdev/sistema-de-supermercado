@@ -1,7 +1,6 @@
-from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as auth_login
-
+from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
 
 from django.http.response import HttpResponse
@@ -18,7 +17,6 @@ def cadastro(request):
         users = User.objects.create_user(username=nome,password=senha)
         users.save()
         return redirect('login')
-
 def login(request):
     if request.method == 'GET':
         return render(request,'login.html')
@@ -31,8 +29,6 @@ def login(request):
             return render(request,'login.html', {'erro':f'Sucesso'})
         
         return render(request,'login.html', {'erro':f'Desculpe usuario não encontrado'})
-
-
 def AddProdutos(request):
     if request.is_authenticated():
         return render(request, 'addprodutos.html')
